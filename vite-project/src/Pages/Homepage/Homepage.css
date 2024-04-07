@@ -1,0 +1,8 @@
+body{
+    background-image: url('./public/wallpaperflare.com_wallpaper.jpg') !important;
+    background-size: cover !important;
+    /* background-position: center !important; */
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    backdrop-filter : blur(10px)
+}

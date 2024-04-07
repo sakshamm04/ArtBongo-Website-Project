@@ -1,0 +1,16 @@
+.buxa{
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+}
+.buxa2{
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+}
+
+
+input::placeholder{
+    text-align: center;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+}
+
