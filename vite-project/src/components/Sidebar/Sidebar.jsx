@@ -2,7 +2,6 @@ import { Avatar, Box, Flex, Image, Link, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import {Link as RouterLink} from 'react-router-dom'
 import { RiHomeSmileFill, RiSearchEyeFill, RiNotificationFill } from "react-icons/ri"
-import { AiFillHome } from "react-icons/ai"
 import { BiLogOut } from "react-icons/bi"
 import { IoLogoModelS } from "react-icons/io"
 import { MdOutlineTexture } from "react-icons/md"
