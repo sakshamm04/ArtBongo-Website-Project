@@ -4,7 +4,11 @@ import {Link as RouterLink} from 'react-router-dom'
 import { CreatePostLogo, NotificationsLogo, SearchLogo } from '../../Assests/constants'
 import { AiFillHome } from "react-icons/ai"
 import { BiLogOut } from "react-icons/bi"
+import { IoLogoModelS } from "react-icons/io"
+import { MdOutlineTexture } from "react-icons/md"
+import { FaMountainSun } from "react-icons/fa6"
 import './Sidebar.css'
+
 const Sidebar = () => {
   const sidebarItems = [{
       icons: <AiFillHome size={25} />,
@@ -20,8 +24,16 @@ const Sidebar = () => {
     text: "Notification",
   },
   {
-    icons: <CreatePostLogo  />,
-    text: "Create",
+    icons: <IoLogoModelS size={25}/>,
+    text: "Models",
+  },
+  {
+    icons: <MdOutlineTexture size={25}/>,
+    text: "Textures",
+  },
+  {
+    icons: <FaMountainSun size={25}/>,
+    text: "HDRIs",
   },
   {
     icons: <Avatar size={"sm"} name='Saksham Pathak' src='/3dsam.jpeg'/>,

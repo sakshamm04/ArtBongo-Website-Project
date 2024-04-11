@@ -1,4 +1,4 @@
-export const SearchLogo = () => (
+export const SearchLogo = () => ( 
 	<svg
 		aria-label='Search'
 		color='rgb(245, 245, 245)'
