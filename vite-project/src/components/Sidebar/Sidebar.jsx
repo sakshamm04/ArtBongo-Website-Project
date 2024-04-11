@@ -1,7 +1,7 @@
 import { Avatar, Box, Flex, Image, Link, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import {Link as RouterLink} from 'react-router-dom'
-import { CreatePostLogo, NotificationsLogo, SearchLogo } from '../../Assests/constants'
+import { RiHomeSmileFill, RiSearchEyeFill, RiNotificationFill } from "react-icons/ri"
 import { AiFillHome } from "react-icons/ai"
 import { BiLogOut } from "react-icons/bi"
 import { IoLogoModelS } from "react-icons/io"
@@ -11,16 +11,16 @@ import './Sidebar.css'
 
 const Sidebar = () => {
   const sidebarItems = [{
-      icons: <AiFillHome size={25} />,
+      icons: <RiHomeSmileFill size={25} />,
       text: "Home",
       link: "/",
   },
   {
-    icons: <SearchLogo />,
+    icons: <RiSearchEyeFill size={25}/>,
     text: "Search",
   },
   {
-    icons: <NotificationsLogo />,
+    icons: <RiNotificationFill size={25}/>,
     text: "Notification",
   },
   {
