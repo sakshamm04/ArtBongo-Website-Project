@@ -25,14 +25,17 @@ const Sidebar = () => {
   {
     icons: <IoLogoModelS size={25}/>,
     text: "Models",
+    link: "/models",
   },
   {
     icons: <MdOutlineTexture size={25}/>,
     text: "Textures",
+    link: "/textures",
   },
   {
     icons: <FaMountainSun size={25}/>,
     text: "HDRIs",
+    link: "/hdris",
   },
   {
     icons: <Avatar size={"sm"} name='Saksham Pathak' src='/3dsam.jpeg'/>,
