@@ -9,12 +9,11 @@ import { FaMountainSun } from "react-icons/fa6"
 import './Sidebar.css'
 
 const Sidebar = () => {
-  const sidebarItems = [
-  //   {
-  //     icons: <RiHomeSmileFill size={25} />,
-  //     text: "Home",
-  //     link: "/",
-  // },
+  const sidebarItems = [{
+      icons: <RiHomeSmileFill size={25} />,
+      text: "Home",
+      link: "/",
+  },
   {
     icons: <RiSearchEyeFill size={25}/>,
     text: "Search",
