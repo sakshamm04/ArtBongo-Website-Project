@@ -69,7 +69,7 @@ import Authform from '../../components/Authform/Authform'
 const Authpage = () => {
   return (
     <Box
-      bgImage="url('https://images3.alphacoders.com/104/1045596.jpg')"  // Replace with your image path
+      bgImage="url('/public/1712934225158.jpeg')"  // Replace with your image path
       bgSize="cover"
       bgPosition="center"
       minH="100vh"
