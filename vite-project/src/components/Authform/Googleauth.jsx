@@ -6,7 +6,7 @@ const Googleauth = () => {
         <>
             <Flex alignContent={"center"} justifyContent={"center"} cursor={"pointer"}>
                 <Image src='/google.png' w={4} alt='Google logo' />
-                <Text mx={1} color={"blue.500"} fontSize={10.5}>
+                <Text mx={1} color={"blue.300"} fontSize={10.5}>
                     Log in with Google
                 </Text>
             </Flex>

@@ -21,23 +21,34 @@
 
 // export default Pagelayout
 
-import { Box, Flex, useAccordion } from '@chakra-ui/react'
+import { Box, Flex, Spinner, useAccordion } from '@chakra-ui/react'
 import React from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import { useLocation } from 'react-router'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../firebase/firebase'
+import Navbar from '../../components/Navbar/Navbar'
 
 const Pagelayout = ({children}) => {
     const {pathname} = useLocation()
+    const [user, loading, error] = useAuthState(auth);
+    const canRendersidebar = pathname !== "/auth" && user;
+    const canRenderNavbar = !user && !loading && pathname !== "/auth";
+    
+    const checkingUserIsAuth = !user && loading;
+	if (checkingUserIsAuth) return <PageLayoutSpinner />;
   return (
-    <Flex>
+    <Flex flexDir={canRenderNavbar ? "column" : "row"}>
         {/* Sidebar on left */}
-        {pathname !== '/auth' ? (
+        {canRendersidebar ? (
             <Box w={{base: "70px", md: "240px"}}>
                 <Sidebar/>
             </Box>
         ) : null}
+        {/* NavBar */}
+        {canRenderNavbar ? <Navbar /> : null}
         {/* the page content on right */}
-        <Box flex={1} w={{base: "calc(100% - 70px)", md: "calc(100% - 240px)"}}>
+        <Box flex={1} w={{base: "calc(100% - 70px)", md: "calc(100% - 240px)"}} mx={"auto"}>
             {children}
         </Box>
     </Flex>
@@ -45,3 +56,10 @@ const Pagelayout = ({children}) => {
 }
 
 export default Pagelayout
+const PageLayoutSpinner = () => {
+	return (
+		<Flex flexDir='column' h='100vh' alignItems='center' justifyContent='center'>
+			<Spinner size='xl' />
+		</Flex>
+	);
+};

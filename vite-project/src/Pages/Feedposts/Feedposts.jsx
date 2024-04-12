@@ -31,7 +31,7 @@ const Feedposts = () => {
           <>
             <Feedpost img='/Setting.jpeg' username='kennyphases' avatar='/kenn.jpeg'/>
             <Feedpost img='/duck.jpeg' username='ducky3d' avatar='/ducky.jpeg'/>
-            <Feedpost img='/and.jpeg' username='andrewpprice' avatar='/andrew.jpeg'/>
+            <Feedpost img='/andeww.jpeg' username='andrewpprice' avatar='/andrew.jpeg'/>
             <Feedpost img='/efee.jpeg' username='efeislekel' avatar='/efe.jpeg'/>
             <Feedpost img='/cgg.jpeg' username='cg_geeks' avatar='/cg.jpeg'/>
           </>
