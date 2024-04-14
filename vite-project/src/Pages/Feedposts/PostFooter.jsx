@@ -1,43 +1,35 @@
-import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useRef } from 'react'
 import { useState } from 'react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../Assests/constants'
 import usePostComment from '../../hooks/usePostComment'
 import useAuthStore from '../../store/authStore'
+import useLikePost from '../../hooks/useLikePost'
+import { timeAgo } from '../../utils/timeAgo'
+import CommentsModal from '../../components/Modals/CommentsModal'
 
-const PostFooter = ({ post, username, isprofilepage }) => {
-  const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(100)
+const PostFooter = ({ post, creatorProfile, isprofilepage }) => {
   const { isCommenting, handlePostComment } = usePostComment()
   const [comment, setComment] = useState("");
   const commentRef = useRef(null);
   const authUser = useAuthStore((state) => state.user);
+  const { handleLikePost, isLiked, likes } = useLikePost(post);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmitComment = async () => {
     await handlePostComment(post.id, comment);
     setComment("");
   }
-
-  const handleLike = () => {
-    if (liked) {
-      setLiked(false)
-      setLikes(likes - 1)
-    } else {
-      setLiked(true)
-      setLikes(likes + 1)
-    }
-
-  }
   return (
     <Box mb={10} marginTop={"auto"}>
       <Flex alignItems={"center"} gap={4} w={"full"} pt={0}
         mb={2} mt={3}>
-        <Box onClick={handleLike}
+        <Box onClick={handleLikePost}
           cursor={"pointer"}
           fontSize={18}>
-          {!liked ? (<NotificationsLogo />) : (<UnlikeLogo />)}
+          {!isLiked ? (<NotificationsLogo />) : (<UnlikeLogo />)}
         </Box>
-        <Box cursor={"pointer"} fontSize={18}>
+        <Box cursor={"pointer"} fontSize={18} onClick={() => commentRef.current.focus()}>
           <CommentLogo />
         </Box>
 
@@ -45,17 +37,25 @@ const PostFooter = ({ post, username, isprofilepage }) => {
       <Text fontSize={"sm"} fontWeight={600} cursor={"pointer"}>
         {likes} likes
       </Text>
+      {isprofilepage && (
+        <Text fontSize={12} color={"gray"}>
+          Posted {timeAgo(post.createdAt)}
+        </Text>
+      )}
       {!isprofilepage && (
         <>
-          <Text fontSize={"sm"} fontWeight={700} cursor={"pointer"}>
-            {username}{" "}
+          <Text fontSize={"sm"} fontWeight={700} cursor={"pointer"} onClick={onOpen}>
+            {creatorProfile?.username}{" "}
             <Text as={'span'} fontWeight={400} cursor={"text"}>
-              What about this Apple's Setting icon?
+              {post.caption}
             </Text>
           </Text>
-          <Text fontSize={"sm"} color={"gray"} cursor={"pointer"}>
-            View all 100 comments
-          </Text>
+          {post.comments.length > 0 && (
+            <Text fontSize={"sm"} color={"gray"} cursor={"pointer"}>
+              View all {post.comments.length} comments
+            </Text>
+          )}
+          {isOpen ? <CommentsModal isOpen={isOpen} onClose={onClose} post={post} /> : null }
         </>
       )}
       {authUser && (

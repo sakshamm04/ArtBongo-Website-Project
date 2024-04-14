@@ -12,6 +12,7 @@ import useShowToast from '../../hooks/useShowToast'
 import usePostStore from '../../store/postStore'
 import { firestore, storage } from '../../firebase/firebase'
 import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore'
+import Caption from '../../components/Comment/Caption'
 
 const Profilepost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -23,28 +24,28 @@ const Profilepost = ({ post }) => {
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
 
   const handleDeletePost = async () => {
-		if (!window.confirm("Are you sure you want to delete this post?")) return;
-		if (isDeleting) return;
+    if (!window.confirm("Are you sure you want to delete this post?")) return;
+    if (isDeleting) return;
 
-		try {
-			const imageRef = ref(storage, `posts/${post.id}`);
-			await deleteObject(imageRef);
-			const userRef = doc(firestore, "users", authUser.uid);
-			await deleteDoc(doc(firestore, "posts", post.id));
+    try {
+      const imageRef = ref(storage, `posts/${post.id}`);
+      await deleteObject(imageRef);
+      const userRef = doc(firestore, "users", authUser.uid);
+      await deleteDoc(doc(firestore, "posts", post.id));
 
-			await updateDoc(userRef, {
-				posts: arrayRemove(post.id),
-			});
+      await updateDoc(userRef, {
+        posts: arrayRemove(post.id),
+      });
 
-			deletePost(post.id);
-			decrementPostsCount(post.id);
-			showToast("Success", "Post deleted successfully", "success");
-		} catch (error) {
-			showToast("Error", error.message, "error");
-		} finally {
-			setIsDeleting(false);
-		}
-	};
+      deletePost(post.id);
+      decrementPostsCount(post.id);
+      showToast("Success", "Post deleted successfully", "success");
+    } catch (error) {
+      showToast("Error", error.message, "error");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   return (
     <>
@@ -130,19 +131,27 @@ const Profilepost = ({ post }) => {
                       borderRadius={4} p={1}
                       onClick={handleDeletePost}
                       isLoading={isDeleting}
-                      >
+                    >
                       <MdDelete size={20} cursor={"pointer"} />
                     </Button>
                   )}
                 </Flex>
                 <Divider my={4} bg={"gray.500"} />
+                {/* <VStack w={"full"} alignItems={"start"} maxH={"350px"} overflowY={"auto"}>
+                  {post.caption && <Caption post={post} />}
+                  {post.comments.map(comment => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
+                </VStack> */}
                 <VStack w={"full"} alignItems={"start"} maxH={"350px"} overflowY={"auto"}>
+                  {post.caption && <Caption post={post} />}
                   {post.comments.map(comment => (
                     <Comment key={comment.id} comment={comment} />
                   ))}
                 </VStack>
+
                 <Divider my={4} bg={"gray.0000"} />
-                <PostFooter isprofilepage={true} post={post}/>
+                <PostFooter isprofilepage={true} post={post} />
               </Flex>
             </Flex>
           </ModalBody>
