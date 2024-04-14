@@ -4,14 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC2dnuyk2Y1Kl9xOal_1Kp_VxyqGMvo6-M",
-    authDomain: "artbongo-project.firebaseapp.com",
-    projectId: "artbongo-project",
-    storageBucket: "artbongo-project.appspot.com",
-    messagingSenderId: "13641894930",
-    appId: "1:13641894930:web:8b4fb82f1182637a7a9ccb",
-    measurementId: "G-DS22927DDL"
-  };
+	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+	authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+	projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+	storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+	appId: import.meta.env.VITE_FIREBASE_APP_ID,
+	measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
