@@ -3,13 +3,14 @@ import React from 'react'
 import useAuthStore from '../../store/authStore';
 import useUserProfileStore from '../../store/userProfileStore';
 import EditProfile from './EditProfile';
+import useFollowUser from '../../hooks/useFollowUser';
 
 const Profileheader = () => {
 
   const { userProfile } = useUserProfileStore();
   const authUser = useAuthStore((state) => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid);
+  const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid);
   const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
   const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
 
@@ -46,12 +47,15 @@ const Profileheader = () => {
               Edit Profile
             </Button>
           </Flex>}
-          {visitingAnotherProfileAndAuth && <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+          {visitingAnotherProfileAndAuth && (<Flex gap={4} alignItems={"center"} justifyContent={"center"}>
             <Button bg={"white"} color={"black"} _hover={{ bg: "whiteAlpha.600" }}
-              size={{ base: "xs", md: "sm" }}>
-              Follow
+              size={{ base: "xs", md: "sm" }}
+              onClick={handleFollowUser}
+              isLoading={isUpdating}
+              >
+              {isFollowing ? "Unfollow" : "Follow"}
             </Button>
-          </Flex>}
+          </Flex>)}
 
         </VStack>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>

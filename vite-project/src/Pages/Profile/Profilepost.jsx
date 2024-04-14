@@ -5,9 +5,12 @@ import { FaComment } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
 import Comment from '../../components/Comment/Comment'
 import PostFooter from '../Feedposts/PostFooter'
+import useUserProfileStore from '../../store/userProfileStore'
 
-const Profilepost = ({ img }) => {
+const Profilepost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const userProfile = useUserProfileStore((state) => state.userProfile);
+
   return (
     <>
       <GridItem
@@ -37,18 +40,18 @@ const Profilepost = ({ img }) => {
             <Flex>
               <AiFillHeart size={20} />
               <Text fontWeight={"bold"} ml={2}>
-                7
+                {post.likes.length}
               </Text>
             </Flex>
             <Flex>
               <FaComment size={20} />
               <Text fontWeight={"bold"} ml={2}>
-                7
+                {post.comments.length}
               </Text>
             </Flex>
           </Flex>
         </Flex>
-        <Image src={img} alt='Profile Creation' w={"100%"} objectFit={"cover"} />
+        <Image src={post.imageURL} alt='Profile Creation' w={"100%"} h={"100%"} objectFit={"cover"} />
       </GridItem>
 
       <Modal onClose={onClose} isOpen={isOpen}
@@ -70,14 +73,14 @@ const Profilepost = ({ img }) => {
                 borderColor={"whiteAlpha.300"}
                 flex={1.5}
               >
-                <Image src={img} alt='Profile Creation' />
+                <Image src={post.imageURL} alt='Profile Creation' w={"100%"} h={"100%"} objectFit={"cover"} />
               </Box>
               <Flex flex={1} flexDir={"column"} px={10} display={{ base: "none", md: "flex" }}>
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
                   <Flex alignItems={"center"} gap={3}>
-                    <Avatar src='/3dsam.jpeg' size={"sm"} name='Saksham Pathak' />
+                    <Avatar src={userProfile.profilePicURL} size={"sm"} name='Saksham Pathak' />
                     <Text fontWeight={"bold"} fontSize={12}>
-                      3dsam
+                      {userProfile.username}
                     </Text>
                   </Flex>
                   <Box _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
@@ -85,30 +88,30 @@ const Profilepost = ({ img }) => {
                     <MdDelete size={20} cursor={"pointer"} />
                   </Box>
                 </Flex>
-                <Divider my={4} bg={"gray.500"}/>
+                <Divider my={4} bg={"gray.500"} />
                 <VStack w={"full"} alignItems={"start"} maxH={"350px"} overflowY={"auto"}>
                   <Comment
-                  createAt="1d ago"
-                  username="3dsam"
-                  profilePic="/3dsam.jpeg"
-                  text={"Perfume bottle!"}
+                    createAt="1d ago"
+                    username="3dsam"
+                    profilePic="/3dsam.jpeg"
+                    text={"Perfume bottle!"}
                   />
                   <Comment
-                  createAt={"12h ago"}
-                  username={"zacfarmerart"}
-                  profilePic={"/zacfarmerart.jpeg"}
-                  text={"Excellent Man!"}
+                    createAt={"12h ago"}
+                    username={"zacfarmerart"}
+                    profilePic={"/zacfarmerart.jpeg"}
+                    text={"Excellent Man!"}
                   />
                   <Comment
-                  createAt={"47min ago"}
-                  username={"kennyphases"}
-                  profilePic={"/kenn.jpeg"}
-                  text={"Great Sam!"}
+                    createAt={"47min ago"}
+                    username={"kennyphases"}
+                    profilePic={"/kenn.jpeg"}
+                    text={"Great Sam!"}
                   />
 
                 </VStack>
                 <Divider my={4} bg={"gray.0000"} />
-                <PostFooter isprofilepage={true}/>
+                <PostFooter isprofilepage={true} />
               </Flex>
             </Flex>
           </ModalBody>

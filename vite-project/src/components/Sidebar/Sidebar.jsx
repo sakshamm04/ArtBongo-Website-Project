@@ -8,41 +8,10 @@ import { MdOutlineTexture } from "react-icons/md"
 import { FaMountainSun } from "react-icons/fa6"
 import './Sidebar.css'
 import useLogout from '../../hooks/useLogOut'
+import SidebarItems from './SidebarItems'
 
 const Sidebar = () => {
-  const sidebarItems = [{
-    icons: <RiHomeSmileFill size={25} />,
-    text: "Home",
-    link: "/",
-  },
-  {
-    icons: <RiSearchEyeFill size={25} />,
-    text: "Search",
-  },
-  {
-    icons: <RiNotificationFill size={25} />,
-    text: "Notification",
-  },
-  {
-    icons: <IoLogoModelS size={25} />,
-    text: "Models",
-    link: "/models",
-  },
-  {
-    icons: <MdOutlineTexture size={25} />,
-    text: "Textures",
-    link: "/textures",
-  },
-  {
-    icons: <FaMountainSun size={25} />,
-    text: "HDRIs",
-    link: "/hdris",
-  },
-  {
-    icons: <Avatar size={"sm"} name='Saksham Pathak' src='/3dsam.jpeg' />,
-    text: "Profile",
-    link: "/3dsam",
-  }]
+  
   const { handleLogout, isLoggingOut } = useLogout()
   return <Box
     className='sidebarbuxa'
@@ -69,35 +38,7 @@ const Sidebar = () => {
         <Image src='/public/ArtBongoMobileLogo.png' />
       </Link>
       <Flex direction={"column"} gap={5} cursor={"pointer"}>
-        {sidebarItems.map((item, index) => (
-          <Tooltip
-            key={index}
-            hasArrow
-            label={item.text}
-            placement="right"
-            ml={1}
-            openDelay={500}
-            display={{ base: 'block', md: 'none' }}
-          >
-            <Link
-              display={"flex"}
-              to={item.link || null}
-              as={RouterLink}
-              alignItems={"center"}
-              _hover={{ bg: "whiteAlpha.200" }}
-              gap={4}
-              borderRadius={6}
-              p={2}
-              w={{ base: "10", md: "full" }}
-              justifyContent={{ base: "center", md: "flex-start" }}
-            >
-              {item.icons}
-              <Box display={{ base: "none", md: "block" }}>
-                {item.text}
-              </Box>
-            </Link>
-          </Tooltip>
-        ))}
+        <SidebarItems/>
       </Flex>
       {/* LogOut */}
       <Tooltip
