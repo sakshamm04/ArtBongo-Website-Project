@@ -3,40 +3,44 @@ import React from 'react'
 import Suggestedheader from './Suggestedheader'
 import Suggesteduser from './Suggesteduser'
 import useGetSuggestedUsers from '../../hooks/useGetSuggestedUsers'
+import Messages from '../../Pages/Homepage/Messages'
 
 const Suggestedusers = () => {
-    const {isLoading, suggestedUsers} = useGetSuggestedUsers()
+    const { isLoading, suggestedUsers } = useGetSuggestedUsers()
     if (isLoading) return null;
 
-  return (
-    <VStack className='buxaa' py={10} px={6} gap={4}>
-        <Suggestedheader/>
-        {suggestedUsers.length !== 0 && (
-            <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
-            <Text fontSize={12} fontWeight={"bold"} color={"white"}>
-                Suggested For you
-            </Text>
-            <Text fontSize={12} fontWeight={"bold"} _hover={{color:"gray.400"}} cursor={"pointer"}>
-                See all
-            </Text>
-        </Flex>
-        )}
-        {suggestedUsers.map(user => (
-            <Suggesteduser user={user} key={user.uid} />
-        ))}
-        <Box
-    fontSize={12}
-    color={"white"}
-    mt={5}
-    >
-        @2024 Built By {""}
-    <Link href='https://www.youtube.com/@BlenderGuy3dSam' target='_blank' color={'blue.400'}
-    fontSize={14}>
-        Saksham Pathak(3dsam)
-    </Link>
-    </Box>
-    </VStack>
-  )
+    return (
+        <>
+            <Messages />
+            <VStack className='buxaa' py={10} px={6} gap={4}>
+                <Suggestedheader />
+                {suggestedUsers.length !== 0 && (
+                    <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
+                        <Text fontSize={12} fontWeight={"bold"} color={"white"}>
+                            Suggested For you
+                        </Text>
+                        <Text fontSize={12} fontWeight={"bold"} _hover={{ color: "gray.400" }} cursor={"pointer"}>
+                            See all
+                        </Text>
+                    </Flex>
+                )}
+                {suggestedUsers.map(user => (
+                    <Suggesteduser user={user} key={user.uid} />
+                ))}
+                <Box
+                    fontSize={12}
+                    color={"white"}
+                    mt={5}
+                >
+                    @2024 Built By {""}
+                    <Link href='https://www.youtube.com/@BlenderGuy3dSam' target='_blank' color={'blue.400'}
+                        fontSize={14}>
+                        Saksham Pathak(3dsam)
+                    </Link>
+                </Box>
+            </VStack>
+        </>
+    )
 }
 
 export default Suggestedusers

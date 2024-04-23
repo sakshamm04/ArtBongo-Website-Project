@@ -1,8 +1,13 @@
 /* body{
-    background-image: url('/public/1712934225158.jpeg') !important;
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/220/60/1018/digital-art-minimalism-simple-background-abstract-wallpaper-preview.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    backdrop-filter : blur(10px)
+    backdrop-filter : blur(7px)
 } */
+
+.rightbuxa {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}

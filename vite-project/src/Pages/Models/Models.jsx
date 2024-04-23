@@ -1,4 +1,4 @@
-import { Grid, GridItem, Image, Flex, Box, Heading } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Image, Heading, useMediaQuery } from "@chakra-ui/react";
 
 const Models = () => {
   const photos = [
@@ -10,52 +10,55 @@ const Models = () => {
     { id: 6, src: "https://netrinoimages.s3.eu-west-2.amazonaws.com/2021/04/12/825259/484613/hightech_future_exhibition_hall_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_4959457_m.jpg", label: "Technology" },
   ];
 
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+
   return (
-    <Flex direction="column" align="center" justify="center" height="100vh">
-      <Heading mb={8}>Choose Your Model Type</Heading>
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-        {photos.map((photo) => (
-          <GridItem
-            key={photo.id}
-            cursor="pointer"
-            borderRadius={4}
-            overflow="hidden"
-            border="1px solid"
-            borderColor="whiteAlpha.300"
-            position="relative"
-            height={"200px"}
-          >
-            <Flex
-              opacity={0}
-              _hover={{ opacity: 1 }}
-              position="absolute"
-              top={0}
-              left={0}
-              right={0}
-              bottom={0}
-              bg="blackAlpha.700"
-              transition="all 0.3s ease"
-              zIndex={1}
-              justifyContent="center"
-              alignItems="center"
+    <Box height="100vh" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+      <Heading mb={8} textAlign="center">Choose Your Model Category</Heading>
+      <Box maxWidth="1200px" width="100%" px={4} overflowY="auto" display="flex" justifyContent="center">
+        <Grid templateColumns={isLargerThan768 ? "repeat(3, 1fr)" : "repeat(1, 1fr)"} gap={6}>
+          {photos.map((photo) => (
+            <GridItem
+              key={photo.id}
+              cursor="pointer"
+              borderRadius={4}
+              overflow="hidden"
+              border="1px solid"
+              borderColor="whiteAlpha.300"
+              position="relative"
+              height={"200px"}
             >
-              <Box>
+              <Box
+                opacity={0}
+                _hover={{ opacity: 1 }}
+                position="absolute"
+                top={0}
+                left={0}
+                right={0}
+                bottom={0}
+                bg="blackAlpha.700"
+                transition="all 0.3s ease"
+                zIndex={1}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
                 <Heading size="md" color="white">
                   {photo.label}
                 </Heading>
               </Box>
-            </Flex>
-            <Image
-              src={photo.src}
-              alt={`Photo ${photo.id}`}
-              w="100%"
-              h="100%"
-              objectFit="cover"
-            />
-          </GridItem>
-        ))}
-      </Grid>
-    </Flex>
+              <Image
+                src={photo.src}
+                alt={`Photo ${photo.id}`}
+                w="100%"
+                h="100%"
+                objectFit="cover"
+              />
+            </GridItem>
+          ))}
+        </Grid>
+      </Box>
+    </Box>
   );
 };
 
