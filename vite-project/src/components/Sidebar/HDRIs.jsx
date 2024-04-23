@@ -2,11 +2,11 @@ import { Box, Link, Tooltip } from "@chakra-ui/react";
 import { FaMountainSun } from "react-icons/fa6";
 import { Link as RouterLink } from "react-router-dom";
 
-const Home = () => {
+const Hdri = () => {
 	return (
 		<Tooltip
 			hasArrow
-			label={"Home"}
+			label={"Hdri"}
 			placement='right'
 			ml={1}
 			openDelay={500}
@@ -31,4 +31,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Hdri;

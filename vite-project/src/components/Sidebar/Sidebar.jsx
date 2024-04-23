@@ -1,11 +1,7 @@
-import { Avatar, Box, Button, Flex, Image, Link, Tooltip } from '@chakra-ui/react'
+import { Box, Button, Flex, Image, Link, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { RiHomeSmileFill, RiSearchEyeFill, RiNotificationFill } from "react-icons/ri"
 import { BiLogOut } from "react-icons/bi"
-import { IoLogoModelS } from "react-icons/io"
-import { MdOutlineTexture } from "react-icons/md"
-import { FaMountainSun } from "react-icons/fa6"
 import './Sidebar.css'
 import useLogout from '../../hooks/useLogOut'
 import SidebarItems from './SidebarItems'

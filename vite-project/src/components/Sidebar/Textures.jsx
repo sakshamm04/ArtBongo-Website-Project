@@ -2,11 +2,11 @@ import { Box, Link, Tooltip } from "@chakra-ui/react";
 import { MdOutlineTexture } from "react-icons/md";
 import { Link as RouterLink } from "react-router-dom";
 
-const Home = () => {
+const Texture = () => {
 	return (
 		<Tooltip
 			hasArrow
-			label={"Home"}
+			label={"Texture"}
 			placement='right'
 			ml={1}
 			openDelay={500}
@@ -31,4 +31,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Texture;
