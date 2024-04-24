@@ -6,6 +6,7 @@ import Profilepage from "./Pages/Profilepage/Profilepage"
 import Models from "./Pages/Models/Models"
 import Textures from "./Pages/Textures/Textures"
 import Hdri from "./Pages/HDRIs/Hdri"
+import BongoRepo from "./Pages/BongoRepo/BongoRepo"
 
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "./firebase/firebase"
@@ -20,6 +21,7 @@ function App() {
         <Route path="/models" element={<Models/>}/>
         <Route path="/textures" element={<Textures/>}/>
         <Route path="/hdris" element={<Hdri/>}/>
+        <Route path="/bongorepo" element={<BongoRepo/>}/>
         <Route path="/:username" element={<Profilepage/>}/>
       </Routes>
     </Pagelayout>

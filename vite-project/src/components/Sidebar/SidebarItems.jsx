@@ -4,9 +4,9 @@ import HDRIs from './HDRIs'
 import Search from './Search'
 import Textures from './Textures'
 import Models from './Models'
-import Notifications from './Notifications'
 import ProfileLink from './ProfileLink'
 import CreatePost from './CreatePost'
+import BongoRepo from './BongoRepo'
 
 
 const SidebarItems = () => {
@@ -14,11 +14,11 @@ const SidebarItems = () => {
     <>
         <Home/>
         <Search/>
-        <Notifications/>
         <CreatePost/>
         <Models/>
         <Textures/>
         <HDRIs/>
+        <BongoRepo/>
         <ProfileLink/>
     </>
   )

@@ -1,9 +1,10 @@
-import { Box, Container, Flex, VStack } from '@chakra-ui/react'
+import { Box, Container, Flex, Image, VStack, Link } from '@chakra-ui/react'
 import React from 'react'
 import Feedposts from '../Feedposts/Feedposts'
 import Suggestedusers from '../../components/Suggestedusers/Suggestedusers'
 import './Homepage.css'
-import Messages from './Messages'
+import { Link as RouterLink } from 'react-router-dom'
+
 const Homepage = () => {
   return (
     <Box>
@@ -19,7 +20,7 @@ const Homepage = () => {
         >
           <VStack
             className='rightbuxa'
-            py={10} alignContent={"center"}
+            py={5} alignContent={"center"}
             height={"100vh"}
             top={0}
             right={0}

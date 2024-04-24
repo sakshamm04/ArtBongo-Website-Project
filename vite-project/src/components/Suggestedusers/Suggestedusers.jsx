@@ -4,6 +4,9 @@ import Suggestedheader from './Suggestedheader'
 import Suggesteduser from './Suggesteduser'
 import useGetSuggestedUsers from '../../hooks/useGetSuggestedUsers'
 import Messages from '../../Pages/Homepage/Messages'
+import Notifications from '../../Pages/Homepage/Notifications'
+import Abouts from '../../Pages/Homepage/Abouts'
+
 
 const Suggestedusers = () => {
     const { isLoading, suggestedUsers } = useGetSuggestedUsers()
@@ -11,8 +14,7 @@ const Suggestedusers = () => {
 
     return (
         <>
-            <Messages />
-            <VStack className='buxaa' py={10} px={6} gap={4}>
+            <VStack className='buxaa' py={6} px={6} gap={4} borderBottomWidth={1}>
                 <Suggestedheader />
                 {suggestedUsers.length !== 0 && (
                     <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
@@ -38,6 +40,11 @@ const Suggestedusers = () => {
                         Saksham Pathak(3dsam)
                     </Link>
                 </Box>
+            </VStack>
+            <VStack py={6}>
+                <Messages />
+                <Notifications />
+                <Abouts />
             </VStack>
         </>
     )

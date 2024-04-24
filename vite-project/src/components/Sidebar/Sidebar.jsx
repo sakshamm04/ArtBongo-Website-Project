@@ -22,15 +22,19 @@ const Sidebar = () => {
   >
 
     <Flex direction={"column"} gap={6} w="full" height={"full"}>
-      <Link to={"/"} as={RouterLink} pl={0.5} display={{ base: "none", md: "block" }}
-        borderRadius={6}
-        _hover={{
-          bg: "whiteAlpha.200"
-        }}
-        cursor={"pointer"}>
-        <Image src='/public/ArtBongo2.png' h={10} />
-      </Link>
-      <Link to={"/"} as={RouterLink} p={2} display={{ base: "block", md: "none" }} cursor={"pointer"}>
+    <Link to={"/"} as={RouterLink} pl={0.5}
+              display={{ base: "none", md: "block" }}
+              borderRadius={6}
+              _hover={{
+                bg: "whiteAlpha.200"
+              }}
+              cursor={"pointer"}>
+              <Image src='/public/ArtBongo2.png' h={10} />
+            </Link>
+      <Link to={"/"} as={RouterLink} p={2}
+      display={{ base: "block", md: "none" }}
+      cursor={"pointer"}
+      >
         <Image src='/public/ArtBongoMobileLogo.png' />
       </Link>
       <Flex direction={"column"} gap={5} cursor={"pointer"}>
