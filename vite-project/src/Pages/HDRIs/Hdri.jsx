@@ -60,7 +60,7 @@ const Hdri = () => {
 
   return (
     <Box height="100vh" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-      <Heading mb={8} textAlign="center">Choose Your Model Category</Heading>
+      <Heading mb={8} textAlign="center">Choose Your HDRI Category</Heading>
       <Box maxWidth="1200px" width="100%" px={4} overflowY="auto" display="flex" justifyContent="center">
         <Grid templateColumns={isLargerThan768 ? "repeat(2, 1fr)" : "repeat(1, 1fr)"} gap={6}>
           {categories.map((category) => (
